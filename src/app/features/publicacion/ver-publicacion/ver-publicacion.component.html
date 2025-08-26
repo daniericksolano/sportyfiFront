@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10">
+      @if (publicacion) {
+      <div class="card shadow">
+        <div class="card-header text-white">
+          <h4 class="mb-0">{{ publicacion.titulo }}</h4>
+          <small class="text-light">
+            {{ publicacion.deporte }} - {{ publicacion.posicionDeporte }}
+          </small>
+        </div>
+
+        <div class="card-body d-flex flex-wrap">
+          <div class="mb-3 col-12">
+            <h5 class="card-title">Descripción</h5>
+            <p class="card-text">{{ publicacion.descripcion }}</p>
+          </div>
+          @if (publicacion.imagen) {
+          <div class="mb-3 col-xl-4 col-12 d-flex justify-content-center flex-wrap">
+            <h5 class="card-title col-12">Foto</h5>
+            <img [src]="publicacion.imagen" alt="Imagen de la publicación" class="img-fluid rounded">
+          </div>
+          }
+          @if (publicacion.video) {
+          <div class="mb-3 col-xl-8 col-12 px-md-2">
+            <h5 class="card-title">Video</h5>
+            <div class="ratio ratio-16x9">
+              <iframe [src]="formatoVideoEmbed(publicacion.video)" allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

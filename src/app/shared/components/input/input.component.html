@@ -1,0 +1,20 @@
+<div class="mb-3" [formGroup]="form">
+    <label [for]="nameInput">{{label}}</label>
+    <!--<input [type]="type" class="form-control {{class}}" [placeholder]="placeholder" [formControlName]="nameInput"
+    [id]="id"  [name]="nameInput">-->
+    <input
+    [type]="type"
+    class="form-control {{class}}"
+    [placeholder]="placeholder"
+    [formControlName]="nameInput"
+    [id]="id"
+    [name]="nameInput"
+    [value]="value">
+    @if (submitted && formInvalid) {
+    <small class="text-danger">
+        @for (error of errorsMessageArray(); track $index) {
+            {{getErrorMessage(error)}} <br>
+        }
+    </small>
+    }
+</div>

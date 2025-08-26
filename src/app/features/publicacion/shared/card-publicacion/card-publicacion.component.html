@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;">
+  <img [src]="publicacion?.imagen" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ publicacion?.titulo }}</h5>
+    <h6>{{ publicacion?.posicionDeporte }}</h6>
+    <p class="card-text descripcion">{{ publicacion?.descripcion }}</p>
+    <a (click)="ver(0)" class="btn btn-primary">Ver Publicacion</a>
+  </div>
+</div>

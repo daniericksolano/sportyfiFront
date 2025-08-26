@@ -1,0 +1,112 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="card shadow">
+        <div class="card-header text-white">
+          <h4 class="mb-0">Crear Nueva Publicación</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="mb-3">
+              <label for="titulo" class="form-label">Título</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="titulo" 
+                formControlName="titulo"
+                [class.is-invalid]="form.get('titulo')?.invalid && form.get('titulo')?.touched">
+              <div class="invalid-feedback" *ngIf="form.get('titulo')?.invalid">
+                El título es requerido
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="deporte" class="form-label">Deporte</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="deporte" 
+                formControlName="deporte"
+                [class.is-invalid]="form.get('deporte')?.invalid && form.get('deporte')?.touched">
+              <div class="invalid-feedback" *ngIf="form.get('deporte')?.invalid">
+                El deporte es requerido
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="posicionDeporte" class="form-label">Posición</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="posicionDeporte" 
+                formControlName="posicionDeporte"
+                [class.is-invalid]="form.get('posicionDeporte')?.invalid && form.get('posicionDeporte')?.touched">
+              <div class="invalid-feedback" *ngIf="form.get('posicionDeporte')?.invalid">
+                La posición es requerida
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <textarea 
+                class="form-control" 
+                id="descripcion" 
+                rows="5" 
+                formControlName="descripcion"
+                [class.is-invalid]="form.get('descripcion')?.invalid && form.get('descripcion')?.touched"></textarea>
+              <div class="invalid-feedback" *ngIf="form.get('descripcion')?.invalid">
+                La descripción es requerida
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="video" class="form-label">Video (URL)</label>
+              <input 
+                type="url" 
+                class="form-control" 
+                id="video" 
+                formControlName="video"
+                placeholder="https://youtube.com/watch?v=...">
+            </div>
+
+            <div class="mb-3">
+              <label for="imagen" class="form-label">Imagen</label>
+              <div class="input-group">
+                <input 
+                  type="file" 
+                  class="form-control" 
+                  id="imagen" 
+                  accept="image/*"
+                  (change)="onImageSelect($event)">
+              </div>
+              
+              <div class="mt-2" *ngIf="imagenPreview">
+                <img 
+                  [src]="imagenPreview" 
+                  alt="Vista previa" 
+                  class="img-fluid rounded"
+                  style="max-height: 200px;">
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button 
+                type="button" 
+                class="btn btn-secondary"
+                routerLink="/publicaciones">
+                Cancelar
+              </button>
+              <button 
+                type="submit" 
+                class="btn btn-primary"
+                [disabled]="form.invalid">
+                <i class="bi bi-plus-circle me-1"></i>
+                Crear Publicación
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

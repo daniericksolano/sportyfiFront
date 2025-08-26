@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-white">
+          <h4 class="mb-0">
+            <i class="bi bi-list me-2"></i>
+            Iniciar Sesión
+          </h4>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="login()" class="card-body">
+          <app-input [nameInput]="'correo'" [id]="'correo'" [label]="'Correo Electrónico'"
+              [type]="'email'" [placeholder]="'Ingresa tu correo electrónico'" [submitted]="submitted"></app-input>
+          <app-input [nameInput]="'password'" [id]="'password'" [label]="'Contraseña'" 
+          [type]="'password'" [placeholder]="'Ingresa tu contraseña'" [submitted]="submitted"></app-input>
+          <div class="mb-3">
+            <label for="tipoUsuario" class="form-label">¿Qué tipo de usuario eres?</label>
+            <select id="tipoUsuario" class="form-select" formControlName="tipoUsuario">
+              <option value="" disabled>Selecciona tipo</option>
+              <option value="deportista">Deportista</option>
+              <option value="cazatalentos">Cazatalentos</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

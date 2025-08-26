@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10">
+      <div class="card shadow">
+        <div class="card-header text-white d-flex justify-content-between">
+          <h4 class="mb-0">
+            <i class="bi bi-list me-2"></i>
+            Lista de Publicaciones
+          </h4>
+          <a class="btn btn-primary" routerLink="/publicaciones/crear">Crear Publicación</a>
+        </div>
+        
+        <div class="card-body">
+          @for (publicacion of publicaciones; track $index) {
+          <app-card-publicacion [publicacion]="publicacion"></app-card-publicacion>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-white d-flex justify-content-between">
+          <h4 class="mb-0">
+            <i class="bi bi-list me-2"></i>
+            {{ titulo() }}
+          </h4>
+          <a class="btn btn-primary" routerLink="/perfil/editar">Editar</a>
+        </div>
+        <div class="card-body d-flex flex-wrap">
+            @if(usuario?.tipoUsuario === 'deportista') {
+            <div class="col-12 mb-5">
+                <img [src]="foto()" class="rounded mx-auto d-block" alt="...">
+            </div>
+            }
+            <div class="col-12 col-md-6">
+                <p class="card-text h4">
+                    <strong>Nombre:</strong> {{ usuario?.nombre }}
+                </p>
+                <hr class="border border-2 opacity-50 col-12">
+            </div>
+            @if(usuario?.tipoUsuario === 'deportista') {
+            <div class="col-12 col-md-6">
+                <p class="card-text h4">
+                    <strong>Club:</strong> {{ club() }}
+                </p>
+                <hr class="border border-2 opacity-50 col-12">
+            </div>
+            }
+            <div class="col-12 col-md-6">
+                <p class="card-text h4">
+                    <strong>Email:</strong> {{ usuario?.correo }}
+                </p>
+                <hr class="border border-2 opacity-50 col-12">
+            </div>
+            <div class="col-12 col-md-6">
+                <p class="card-text h4">
+                    <strong>País:</strong> {{ usuario?.pais }}
+                </p>
+                <hr class="border border-2 opacity-50 col-12">
+            </div>
+            <div class="col-12 col-md-6">
+                <p class="card-text h4">
+                    <strong>Ciudad:</strong> {{ usuario?.ciudad }}
+                </p>
+                <hr class="border border-2 opacity-50 col-12">
+            </div>
+            <div class="col-12 col-md-6">
+                <p class="card-text h4">
+                    <strong>Celular:</strong> {{ usuario?.celular }}
+                </p>
+                <hr class="border border-2 opacity-50 col-12">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
