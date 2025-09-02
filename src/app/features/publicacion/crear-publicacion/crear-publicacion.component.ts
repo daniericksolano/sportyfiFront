@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PublicacionService } from '../shared/service/publicacion-service';
+import { Publicacion } from '../../../shared/models/publicacion.model';
+import { Deportista } from '../../../shared/models/deportista.model';
+import { PerfilService } from '../../perfil/shared/service/perfil.service';
 
 @Component({
   selector: 'app-crear-publicacion',
@@ -18,6 +21,7 @@ export class CrearPublicacionComponent {
   fb = inject(FormBuilder);
   router = inject(Router);
   publicacionService = inject(PublicacionService);
+  perfilService = inject(PerfilService);
 
   form: FormGroup = this.fb.group({
     titulo: ['', Validators.required],
@@ -45,7 +49,20 @@ export class CrearPublicacionComponent {
   submit() {
     if (this.form.invalid) return;
     const datos = this.form.value;
-    this.publicacionService.crearPublicacion(datos).subscribe(() => {
+    let publicacion: Publicacion = {
+      id: 0,
+      titulo: datos.titulo,
+      deporte: datos.deporte,
+      posicionDeporte: datos.posicionDeporte,
+      descripcion: datos.descripcion,
+      video: datos.video,
+      imagen: '', // La imagen se maneja por separado
+      deportista: {
+        id: this.perfilService.obtenerIdUsuario()
+      } as Deportista // Aquí deberías asignar el deportista actual
+    };
+    this.publicacionService.crearPublicacion(publicacion, datos.imagen).subscribe((resp) => {
+      console.log('Publicación creada:', resp);
       this.router.navigate(['/publicaciones']);
     });
   }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Publicacion } from '../../../../shared/models/publicacion.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PublicacionService } from '../service/publicacion-service';
 
 @Component({
   selector: 'app-card-publicacion',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class CardPublicacionComponent {
   @Input() publicacion: Publicacion | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router){}
 
   ver(id: number) {
     this.router.navigate(['/publicaciones/ver', id]);

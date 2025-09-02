@@ -5,6 +5,7 @@ import { CardPublicacionComponent } from "../shared/card-publicacion/card-public
 import { Publicacion } from '../../../shared/models/publicacion.model';
 import { Deportista } from '../../../shared/models/deportista.model';
 import { PublicacionService } from '../shared/service/publicacion-service';
+import { PerfilService } from '../../perfil/shared/service/perfil.service';
 
 @Component({
   selector: 'app-lista-publicacion',
@@ -19,6 +20,7 @@ import { PublicacionService } from '../shared/service/publicacion-service';
 export class ListaPublicacionComponent implements OnInit {
   publicacionService = inject(PublicacionService);
   router = inject(Router);
+  perfilService = inject(PerfilService);
 
   publicaciones: Publicacion[] = [
     {
@@ -34,8 +36,13 @@ export class ListaPublicacionComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    //this.cargarPublicaciones();
+    this.cargarPublicaciones();
   }
+
+  validarTipoUsuario() {
+    return this.perfilService.obtenerTipoUsuario() == 'deportista';
+  }
+
 
   cargarPublicaciones() {
     this.publicacionService.obtenerPublicaciones().subscribe(data => {

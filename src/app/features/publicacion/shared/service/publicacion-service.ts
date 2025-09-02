@@ -9,12 +9,18 @@ import { environment } from '../../../../../environments/environment ';
 })
 export class PublicacionService {
 
-  private apiUrl = environment.apiUrl + "/publicaciones"; // Cambiar por la URL real del backend
+  private apiUrl = environment.apiUrl + "/publicacion"; // Cambiar por la URL real del backend
 
   constructor(private http: HttpClient) {}
 
-  crearPublicacion(publicacion: Publicacion): Observable<Publicacion> {
-    return this.http.post<Publicacion>(`${this.apiUrl}`, publicacion);
+  crearPublicacion(publicacion: Publicacion, foto: any): Observable<any> {
+      const formData = new FormData();
+      const publicacionData = {
+        ...publicacion
+      };
+      formData.append('publicacion', JSON.stringify(publicacionData));
+      formData.append('foto', foto);
+    return this.http.post<Publicacion>(`${this.apiUrl}`, formData);
   }
 
   obtenerPublicaciones(): Observable<Publicacion[]> {

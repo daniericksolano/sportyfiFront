@@ -4,6 +4,6 @@
     <h5 class="card-title">{{ publicacion?.titulo }}</h5>
     <h6>{{ publicacion?.posicionDeporte }}</h6>
     <p class="card-text descripcion">{{ publicacion?.descripcion }}</p>
-    <a (click)="ver(0)" class="btn btn-primary">Ver Publicacion</a>
+    <a (click)="ver(publicacion!.id)" class="btn btn-primary">Ver Publicacion</a>
   </div>
 </div>

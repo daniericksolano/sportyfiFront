@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Deportista } from '../../../shared/models/deportista.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PublicacionService } from '../shared/service/publicacion-service';
+import { AuthService } from '../../auth/service/auth-service';
+import { PerfilService } from '../../perfil/shared/service/perfil.service';
 
 //style="width: 100%; max-width: 600px;"
 @Component({
@@ -22,7 +24,6 @@ export class VerPublicacionComponent implements OnInit {
   router = inject(Router);
   publicacionService = inject(PublicacionService);
   private sanitizer: DomSanitizer = inject(DomSanitizer);
-
   publicacion: any = {
         id: 1,
         titulo: "Lionel Messi",
@@ -37,9 +38,9 @@ export class VerPublicacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.idPublicacion = Number(this.route.snapshot.paramMap.get('id'));
-    /*this.publicacionService.obtenerPublicacionPorId(this.idPublicacion).subscribe(data => {
+    this.publicacionService.obtenerPublicacionPorId(this.idPublicacion).subscribe(data => {
       this.publicacion = data;
-    });*/
+    });
   }
 
   volver() {

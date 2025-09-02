@@ -27,4 +27,9 @@ export class PerfilService {
     if (!token) return null;
     return JSON.parse(token).tipoUsuario;
   }
+  obtenerIdUsuario(): any | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    return JSON.parse(token).id;
+  }
 }
